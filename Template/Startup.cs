@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Template.Data.Context;
-using Template.IoC;
+
 
 public class Startup
 {
@@ -22,7 +22,7 @@ public class Startup
         services.AddControllersWithViews();
 
         services.AddDbContext<TemplateContext>(x => x.UseSqlServer(Configuration.GetConnectionString("TemplateDB")).EnableSensitiveDataLogging());
-        NativeInjector
+        
         
 
         // Adicione outros serviços conforme necessário.
