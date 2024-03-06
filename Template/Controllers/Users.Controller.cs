@@ -6,7 +6,7 @@ namespace Template.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class Users : ControllerBase
+    public class UsersController : ControllerBase
     {
         private readonly IUserService userService;
 

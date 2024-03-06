@@ -5,7 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Template.Data.Context;
-
+using Template.IoC;
+//using Template.IoC;
 
 public class Startup
 {
@@ -22,14 +23,15 @@ public class Startup
         services.AddControllersWithViews();
 
         services.AddDbContext<TemplateContext>(x => x.UseSqlServer(Configuration.GetConnectionString("TemplateDB")).EnableSensitiveDataLogging());
-        
-        
+
+        NativeInjector.RegisterServices(services);
+        //NativeInjector.RegisterServices(services);
 
         // Adicione outros serviços conforme necessário.
 
-
     }
 
+   
     // Este método é chamado durante a execução para configurar o pipeline de solicitação HTTP.
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
