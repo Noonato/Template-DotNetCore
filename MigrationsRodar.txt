@@ -1,0 +1,5 @@
+Criar Migrations
+dotnet ef migrations add InsertUserDefault --project Template.Data -c TemplateContext --startup-project Template
+
+Rodar Migration
+ dotnet ef database update --project Template.Data -c TemplateContext --startup-project Template
