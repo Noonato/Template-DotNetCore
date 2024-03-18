@@ -26,11 +26,28 @@ namespace Template.Application.Services
             List<UserViewModel> _userViewModels = new List<UserViewModel>();
             IEnumerable<User> _users = userRepository.GetAll();
 
-            foreach(var item in _users)
-                _userViewModels.Add(new UserViewModel {Id = item.Id, Email = item.Email, Name = item.Name });
-           
-            return _userViewModels ;
-            
+            foreach (var item in _users)
+                _userViewModels.Add(new UserViewModel { Id = item.Id, Email = item.Email, Name = item.Name });
+
+            return _userViewModels;
+
+        }
+
+        public bool Post(UserViewModel userViewModel)
+        {
+            User _user = new User
+            {
+                Id = Guid.NewGuid(),
+                Email = userViewModel.Email,
+                Name = userViewModel.Name,
+                DateCreated = DateTime.Now,
+                IsDeleted = false,
+                DateUpdated = null
+            };
+
+            this.userRepository.Create(_user);
+
+            return true;
         }
     }
 }
